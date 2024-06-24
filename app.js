@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 
 const AdminLoginRouter = require('./routes/AdminLoginRouter')
 const MovieRouter = require('./routes/MovieRouter')
+const UserRouter = require('./routes/UserRouter')
 app.use(cors())
 app.use(express.json())
 app.use(bodyParser.json())
@@ -15,6 +16,7 @@ app.use(bodyParser.json())
 
 app.use('/api/v1/movie_rating/admin/login',AdminLoginRouter)
 app.use('/api/v1/movie_rating/admin',MovieRouter)
+app.use('/api/v1/movie_rating/user',UserRouter)
 
 mongoose.connect(process.env.DB_URL)
 const db = mongoose.connection
