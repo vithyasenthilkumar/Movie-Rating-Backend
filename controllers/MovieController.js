@@ -1,5 +1,5 @@
 const moviemodel = require('../model/Moviemodel')
-const movieInitialData = require('../data/Moviedata')
+const movieInitialData = require('../data/moviedata')
 
 const AddmanyMovies = async(request,response) => {
     try
