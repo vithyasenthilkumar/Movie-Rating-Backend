@@ -49,8 +49,7 @@ const UpdateMovie = async(request,response) => {
     const movietobeUpdated = request.body
     console.log(movietobeUpdated)
     try{
-        console.log("lo")
-        const movie = await moviemodel.findOneAndUpdate({_id:movietobeUpdated._id}, movietobeUpdated)
+        const movie = await moviemodel.findOneAndUpdate({MovieName:movietobeUpdated.MovieName,MovieYear:movietobeUpdated.MovieYear}, movietobeUpdated)
         response.status(201).json(movie)
     }
     catch(error)
