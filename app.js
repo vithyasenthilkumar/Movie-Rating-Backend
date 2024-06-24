@@ -18,9 +18,18 @@ app.use('/api/v1/movie_rating/admin/login',AdminLoginRouter)
 app.use('/api/v1/movie_rating/admin',MovieRouter)
 app.use('/api/v1/movie_rating/user',UserRouter)
 
-mongoose.connect(process.env.DB_URL)
-const db = mongoose.connection
-db.on('error',(errorMessage)=>console.log(errorMessage))
-db.once('open',()=>console.log('Connected successfully to database'))
+(async function (){
+    try{
+       const connection = await mongoose.connect(DB_URL);
+       // console.log(connection);
+       if(connection){
+          console.log('Connected successfully to database');
+       }
+    }
+    catch(error){
+       console.log('Db Connection Failed:\n',error);
+    }
+ })();
+
 
 app.listen(PORT,console.log(`Server listening at http://localhost:${PORT}/api/v1/movie_rating`))
